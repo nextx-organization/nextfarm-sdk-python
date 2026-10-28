@@ -1,0 +1,138 @@
+from __future__ import annotations
+
+from collections.abc import Mapping
+from typing import Any, TypeVar, BinaryIO, TextIO, TYPE_CHECKING, Generator
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+from ..types import UNSET, Unset
+from typing import cast
+
+
+
+
+
+
+T = TypeVar("T", bound="GisUpdateCropTypeRequest")
+
+
+
+@_attrs_define
+class GisUpdateCropTypeRequest:
+    
+
+    category: None | str | Unset = UNSET
+    code: None | str | Unset = UNSET
+    grow_days: int | None | Unset = UNSET
+    is_active: bool | Unset = UNSET
+    name: None | str | Unset = UNSET
+
+
+
+
+
+    def to_dict(self) -> dict[str, Any]:
+        category: None | str | Unset
+        if isinstance(self.category, Unset):
+            category = UNSET
+        else:
+            category = self.category
+
+        code: None | str | Unset
+        if isinstance(self.code, Unset):
+            code = UNSET
+        else:
+            code = self.code
+
+        grow_days: int | None | Unset
+        if isinstance(self.grow_days, Unset):
+            grow_days = UNSET
+        else:
+            grow_days = self.grow_days
+
+        is_active = self.is_active
+
+        name: None | str | Unset
+        if isinstance(self.name, Unset):
+            name = UNSET
+        else:
+            name = self.name
+
+
+        field_dict: dict[str, Any] = {}
+
+        field_dict.update({
+        })
+        if category is not UNSET:
+            field_dict["category"] = category
+        if code is not UNSET:
+            field_dict["code"] = code
+        if grow_days is not UNSET:
+            field_dict["grow_days"] = grow_days
+        if is_active is not UNSET:
+            field_dict["is_active"] = is_active
+        if name is not UNSET:
+            field_dict["name"] = name
+
+        return field_dict
+
+
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        def _parse_category(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        category = _parse_category(d.pop("category", UNSET))
+
+
+        def _parse_code(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        code = _parse_code(d.pop("code", UNSET))
+
+
+        def _parse_grow_days(data: object) -> int | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(int | None | Unset, data)
+
+        grow_days = _parse_grow_days(d.pop("grow_days", UNSET))
+
+
+        is_active = d.pop("is_active", UNSET)
+
+        def _parse_name(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        name = _parse_name(d.pop("name", UNSET))
+
+
+        gis_update_crop_type_request = cls(
+            category=category,
+            code=code,
+            grow_days=grow_days,
+            is_active=is_active,
+            name=name,
+        )
+
+        return gis_update_crop_type_request
+
