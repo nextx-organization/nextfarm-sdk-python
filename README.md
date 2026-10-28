@@ -1,13 +1,18 @@
 # nextfarm-sdk
 
-> Mã trong kho này được sinh tự động từ [OpenAPI công khai](https://developers.nextfarm.vn/openapi.json). Đừng sửa tay — xem [CONTRIBUTING.md](CONTRIBUTING.md).
+Thư viện chính thức để gọi NextFarm API từ Python, hỗ trợ cả đồng bộ và `async`.
 
-Gọi NextFarm API từ Python, có kiểu đầy đủ (đồng bộ và `async`). Mã sinh từ [`/openapi.json`](https://developers.nextfarm.vn/openapi.json)
-và chỉ gồm các tuyến khoá API gọi được.
+Mã trong kho này được sinh tự động từ [OpenAPI của NextFarm](https://developers.nextfarm.vn/openapi.json). Vui lòng không sửa trực tiếp, xem [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Cài đặt
 
 ```sh
 pip install nextfarm-sdk
 ```
+
+Yêu cầu Python 3.11 trở lên.
+
+## Bắt đầu
 
 ```python
 import os
@@ -24,9 +29,16 @@ for d in page.items or []:
 page = await get_api_v1_iot_devices.asyncio(client=nf, page=1)
 ```
 
-- Python ≥ 3.11. Mỗi tuyến là một mô-đun trong `nextfarm_sdk.api.<phân hệ>` với 4 hàm: `sync`, `sync_detailed`, `asyncio`, `asyncio_detailed`.
-  Bản `*_detailed` trả thêm mã trạng thái và header.
-- Mặc định gọi prod (`PROD_URL`). Thử nghiệm thì dùng `SANDBOX_URL` với khoá sandbox.
-- Mã trạng thái ngoài tài liệu ném `nextfarm_sdk.errors.UnexpectedStatus`.
+## Ghi chú
 
-Tài liệu: https://developers.nextfarm.vn/docs/sdk · Phiên bản và bỏ dần: [VERSIONING.md](https://github.com/nextx-organization/nextfarm-sdk-python/blob/main/VERSIONING.md) · Giấy phép MIT
+- Mỗi endpoint là một module trong `nextfarm_sdk.api.<nhóm>`, gồm bốn hàm `sync`, `sync_detailed`, `asyncio` và `asyncio_detailed`. Các hàm `*_detailed` trả thêm mã trạng thái và header.
+- Mặc định client gọi môi trường production. Khi thử nghiệm, dùng `SANDBOX_URL` với khoá sandbox.
+- Mã trạng thái không có trong tài liệu sẽ ném `nextfarm_sdk.errors.UnexpectedStatus`.
+
+## Tài liệu
+
+- Hướng dẫn: https://developers.nextfarm.vn/docs/sdk
+- Phiên bản và chính sách ngừng hỗ trợ: [VERSIONING.md](VERSIONING.md)
+- Nhật ký thay đổi: [CHANGELOG.md](CHANGELOG.md)
+
+Giấy phép MIT.

@@ -1,5 +1,5 @@
 [project]
-description = "NextFarm API cho Python — sinh từ OpenAPI công khai, có kiểu đầy đủ"
+description = "Official Python client for the NextFarm API"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [{name = "NextFarm", email = "support@nextfarm.vn"}]
@@ -17,7 +17,7 @@ classifiers = [
     "Typing :: Typed",
 ]
 name = "nextfarm-sdk"
-version = "0.1.1"
+version = "0.1.2"
 requires-python = ">=3.11"
 dependencies = [
     "httpx>=0.23.1,<0.29.0",
@@ -45,4 +45,4 @@ Changelog = "https://github.com/nextx-organization/nextfarm-sdk-python/blob/main
 Issues = "https://github.com/nextx-organization/nextfarm-sdk-python/issues"
 
 [tool.nextfarm]
-spec-sha256 = "d66420a488b728f54f08117a4dde1cf2d7208fed9c47b08da823238b3e276fe7"
+spec-sha256 = "ac2308fc010521bb2e02d5192d9a44b14c07a9b15a2d89cc549cddf757b01942"

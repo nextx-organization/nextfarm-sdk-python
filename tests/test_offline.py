@@ -1,4 +1,4 @@
-"""Kiểm không mạng: gói nạp được, client gắn đúng header, gọi đúng đường dẫn."""
+"""Offline tests: package import, headers and URL building."""
 import httpx
 import pytest
 
@@ -7,17 +7,17 @@ from nextfarm_sdk import SANDBOX_URL, VERSION, create_client
 from nextfarm_sdk.api.iot import get_api_v1_iot_devices
 
 
-def test_xuat_api():
+def test_exports():
     assert nextfarm_sdk.PROD_URL == "https://api-prod.nextfarm.vn"
     assert VERSION and VERSION != "0.0.0"
 
 
-def test_thieu_khoa():
+def test_requires_api_key():
     with pytest.raises(ValueError):
         create_client(api_key="")
 
 
-def test_header_va_duong_dan():
+def test_headers_and_url():
     seen = {}
 
     def handler(req: httpx.Request) -> httpx.Response:

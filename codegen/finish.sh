@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Hoàn thiện cây Python vừa sinh: lối vào gọn (create_client), VERSION, siêu dữ liệu PyPI.
-# Dùng chung cho build.sh (lúc sinh) và CI kho nextfarm-sdk-python (kiểm mã không bị sửa tay).
+# Post-processing for the generated package: create_client helper, VERSION, PyPI metadata.
 set -euo pipefail
 P=$1; PYVER=$2; SHA=$3
 PKG=$P/nextfarm_sdk

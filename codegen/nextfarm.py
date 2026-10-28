@@ -1,4 +1,4 @@
-"""Lối vào gọn cho NextFarm API.
+"""Convenience entry point for the NextFarm API.
 
     from nextfarm_sdk import create_client, SANDBOX_URL
     from nextfarm_sdk.api.iot import get_api_v1_iot_devices
@@ -25,9 +25,9 @@ def create_client(
     timeout: float = 30.0,
     raise_on_unexpected_status: bool = True,
 ) -> AuthenticatedClient:
-    """Tạo client đã gắn khoá API `nfk_…` (hoặc access token OAuth), ngôn ngữ thông báo lỗi và User-Agent."""
+    """Create a client authenticated with an API key (`nfk_...`) or an OAuth access token."""
     if not api_key:
-        raise ValueError("NextFarm SDK: thiếu api_key")
+        raise ValueError("NextFarm SDK: api_key is required")
     import httpx
 
     return AuthenticatedClient(

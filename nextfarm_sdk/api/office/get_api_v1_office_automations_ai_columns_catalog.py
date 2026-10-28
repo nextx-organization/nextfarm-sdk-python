@@ -60,10 +60,10 @@ def sync_detailed(
     client: AuthenticatedClient | Client,
 
 ) -> Response[OfficeAiColumnCatalogDto]:
-    """ Bốn chế độ của cột AI + trợ lý đã bật chưa
+    """ Danh mục chế độ của cột AI
 
-     `available: false` nghĩa là máy chủ chưa khai khoá kết nối trợ lý — cột AI cấu hình được nhưng sẽ
-    không chạy. Giao diện phải nói rõ điều đó.
+     Các chế độ cột AI dùng được trong tự động hoá. `available: false` nghĩa là tính năng chưa bật cho
+    không gian làm việc này: cột vẫn cấu hình được nhưng chưa tạo nội dung.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -89,10 +89,10 @@ def sync(
     client: AuthenticatedClient | Client,
 
 ) -> OfficeAiColumnCatalogDto | None:
-    """ Bốn chế độ của cột AI + trợ lý đã bật chưa
+    """ Danh mục chế độ của cột AI
 
-     `available: false` nghĩa là máy chủ chưa khai khoá kết nối trợ lý — cột AI cấu hình được nhưng sẽ
-    không chạy. Giao diện phải nói rõ điều đó.
+     Các chế độ cột AI dùng được trong tự động hoá. `available: false` nghĩa là tính năng chưa bật cho
+    không gian làm việc này: cột vẫn cấu hình được nhưng chưa tạo nội dung.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,10 +113,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient | Client,
 
 ) -> Response[OfficeAiColumnCatalogDto]:
-    """ Bốn chế độ của cột AI + trợ lý đã bật chưa
+    """ Danh mục chế độ của cột AI
 
-     `available: false` nghĩa là máy chủ chưa khai khoá kết nối trợ lý — cột AI cấu hình được nhưng sẽ
-    không chạy. Giao diện phải nói rõ điều đó.
+     Các chế độ cột AI dùng được trong tự động hoá. `available: false` nghĩa là tính năng chưa bật cho
+    không gian làm việc này: cột vẫn cấu hình được nhưng chưa tạo nội dung.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -142,10 +142,10 @@ async def asyncio(
     client: AuthenticatedClient | Client,
 
 ) -> OfficeAiColumnCatalogDto | None:
-    """ Bốn chế độ của cột AI + trợ lý đã bật chưa
+    """ Danh mục chế độ của cột AI
 
-     `available: false` nghĩa là máy chủ chưa khai khoá kết nối trợ lý — cột AI cấu hình được nhưng sẽ
-    không chạy. Giao diện phải nói rõ điều đó.
+     Các chế độ cột AI dùng được trong tự động hoá. `available: false` nghĩa là tính năng chưa bật cho
+    không gian làm việc này: cột vẫn cấu hình được nhưng chưa tạo nội dung.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

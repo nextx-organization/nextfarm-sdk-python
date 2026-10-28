@@ -1,7 +1,7 @@
-# openapi-python-client — tên gói cố định; phiên bản do scripts/build.sh ghi đè theo sdk.json.
+# openapi-python-client configuration
 project_name_override: nextfarm-sdk
 package_name_override: nextfarm_sdk
 literal_enums: true
 docstrings_on_attributes: true
 post_hooks: []
-package_version_override: 0.1.1
+package_version_override: 0.1.2
