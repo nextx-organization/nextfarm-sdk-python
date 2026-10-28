@@ -1,0 +1,48 @@
+[project]
+description = "NextFarm API cho Python — sinh từ OpenAPI công khai, có kiểu đầy đủ"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "NextFarm", email = "support@nextfarm.vn"}]
+keywords = ["nextfarm", "agriculture", "api", "sdk", "openapi", "iot", "gis", "traceability"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
+name = "nextfarm-sdk"
+version = "0.1.0b6"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.23.1,<0.29.0",
+    "attrs>=22.2.0",
+]
+
+[tool.pdm]
+distribution = true
+
+[build-system]
+requires = ["pdm-backend==2.4.5"]
+build-backend = "pdm.backend"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["F", "I", "UP"]
+
+[project.urls]
+Homepage = "https://developers.nextfarm.vn/docs/sdk"
+Documentation = "https://developers.nextfarm.vn"
+Source = "https://github.com/nextx-organization/nextfarm-sdk-python"
+Changelog = "https://github.com/nextx-organization/nextfarm-sdk-python/blob/main/CHANGELOG.md"
+Issues = "https://github.com/nextx-organization/nextfarm-sdk-python/issues"
+
+[tool.nextfarm]
+spec-sha256 = "d66420a488b728f54f08117a4dde1cf2d7208fed9c47b08da823238b3e276fe7"

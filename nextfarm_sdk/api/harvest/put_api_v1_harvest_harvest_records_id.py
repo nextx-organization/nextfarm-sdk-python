@@ -1,0 +1,218 @@
+from http import HTTPStatus
+from typing import Any, cast
+from urllib.parse import quote
+
+import httpx
+
+from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
+from ...models.harvest_harvest_record_dto import HarvestHarvestRecordDto
+from ...models.harvest_problem_details import HarvestProblemDetails
+from ...models.harvest_update_harvest_record_request import HarvestUpdateHarvestRecordRequest
+from ...types import UNSET, Unset
+from typing import cast
+from uuid import UUID
+
+
+
+def _get_kwargs(
+    id: UUID,
+    *,
+    body: HarvestUpdateHarvestRecordRequest | Unset = UNSET,
+
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+
+
+    
+
+    
+
+    _kwargs: dict[str, Any] = {
+        "method": "put",
+        "url": "/api/v1/harvest/harvest-records/{id}".format(id=quote(str(id), safe=""),),
+    }
+
+    
+    if not isinstance(body, Unset):
+        _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
+    return _kwargs
+
+
+
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> HarvestHarvestRecordDto | HarvestProblemDetails | None:
+    if response.status_code == 200:
+        response_200 = HarvestHarvestRecordDto.from_dict(response.json())
+
+
+
+        return response_200
+
+    if response.status_code == 404:
+        response_404 = HarvestProblemDetails.from_dict(response.json())
+
+
+
+        return response_404
+
+    if response.status_code == 409:
+        response_409 = HarvestProblemDetails.from_dict(response.json())
+
+
+
+        return response_409
+
+    if client.raise_on_unexpected_status:
+        raise errors.UnexpectedStatus(response.status_code, response.content)
+    else:
+        return None
+
+
+def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[HarvestHarvestRecordDto | HarvestProblemDetails]:
+    return Response(
+        status_code=HTTPStatus(response.status_code),
+        content=response.content,
+        headers=response.headers,
+        parsed=_parse_response(client=client, response=response),
+    )
+
+
+def sync_detailed(
+    id: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    body: HarvestUpdateHarvestRecordRequest | Unset = UNSET,
+
+) -> Response[HarvestHarvestRecordDto | HarvestProblemDetails]:
+    """ Cập nhật khai báo thu hoạch
+
+     Chỉ cập nhật được khi status = draft.
+
+    Args:
+        id (UUID):
+        body (HarvestUpdateHarvestRecordRequest | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[HarvestHarvestRecordDto | HarvestProblemDetails]
+     """
+
+
+    kwargs = _get_kwargs(
+        id=id,
+body=body,
+
+    )
+
+    response = client.get_httpx_client().request(
+        **kwargs,
+    )
+
+    return _build_response(client=client, response=response)
+
+def sync(
+    id: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    body: HarvestUpdateHarvestRecordRequest | Unset = UNSET,
+
+) -> HarvestHarvestRecordDto | HarvestProblemDetails | None:
+    """ Cập nhật khai báo thu hoạch
+
+     Chỉ cập nhật được khi status = draft.
+
+    Args:
+        id (UUID):
+        body (HarvestUpdateHarvestRecordRequest | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        HarvestHarvestRecordDto | HarvestProblemDetails
+     """
+
+
+    return sync_detailed(
+        id=id,
+client=client,
+body=body,
+
+    ).parsed
+
+async def asyncio_detailed(
+    id: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    body: HarvestUpdateHarvestRecordRequest | Unset = UNSET,
+
+) -> Response[HarvestHarvestRecordDto | HarvestProblemDetails]:
+    """ Cập nhật khai báo thu hoạch
+
+     Chỉ cập nhật được khi status = draft.
+
+    Args:
+        id (UUID):
+        body (HarvestUpdateHarvestRecordRequest | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[HarvestHarvestRecordDto | HarvestProblemDetails]
+     """
+
+
+    kwargs = _get_kwargs(
+        id=id,
+body=body,
+
+    )
+
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
+
+    return _build_response(client=client, response=response)
+
+async def asyncio(
+    id: UUID,
+    *,
+    client: AuthenticatedClient | Client,
+    body: HarvestUpdateHarvestRecordRequest | Unset = UNSET,
+
+) -> HarvestHarvestRecordDto | HarvestProblemDetails | None:
+    """ Cập nhật khai báo thu hoạch
+
+     Chỉ cập nhật được khi status = draft.
+
+    Args:
+        id (UUID):
+        body (HarvestUpdateHarvestRecordRequest | Unset):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        HarvestHarvestRecordDto | HarvestProblemDetails
+     """
+
+
+    return (await asyncio_detailed(
+        id=id,
+client=client,
+body=body,
+
+    )).parsed
