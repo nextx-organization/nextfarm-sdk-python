@@ -1,10 +1,10 @@
-"""Bổ sung siêu dữ liệu chuẩn PyPI vào pyproject.toml do openapi-python-client sinh (mô tả, giấy phép, liên kết, phân loại)."""
+"""Adds PyPI metadata (description, license, URLs, classifiers) to the generated pyproject.toml."""
 import re
 import sys
 
 path, sha = sys.argv[1], sys.argv[2]
 s = open(path, encoding="utf-8").read()
-meta = '''description = "NextFarm API cho Python — sinh từ OpenAPI công khai, có kiểu đầy đủ"
+meta = '''description = "Official Python client for the NextFarm API"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [{name = "NextFarm", email = "support@nextfarm.vn"}]
@@ -38,5 +38,5 @@ Issues = "https://github.com/nextx-organization/nextfarm-sdk-python/issues"
 [tool.nextfarm]
 spec-sha256 = "{sha}"
 '''
-s = s.replace('requires = ["pdm-backend"]', 'requires = ["pdm-backend==2.4.5"]')  # dựng lặp lại được
+s = s.replace('requires = ["pdm-backend"]', 'requires = ["pdm-backend==2.4.5"]')
 open(path, "w", encoding="utf-8").write(s)

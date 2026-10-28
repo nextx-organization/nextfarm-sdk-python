@@ -1,11 +1,11 @@
-# Kiểm mỗi lần mã sinh được đẩy sang: mã khớp openapi.json (không ai sửa tay), dựng bánh xe, test trên Python 3.11–3.13.
+# Verifies generated code matches openapi.json, then builds and tests on Python 3.11-3.13.
 name: ci
 on:
   push: { branches: [main, next] }
   pull_request:
 permissions: { contents: read }
 jobs:
-  khop-ma-sinh:
+  verify-generated:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
