@@ -4,4 +4,4 @@ package_name_override: nextfarm_sdk
 literal_enums: true
 docstrings_on_attributes: true
 post_hooks: []
-package_version_override: 0.1.2
+package_version_override: 0.1.3

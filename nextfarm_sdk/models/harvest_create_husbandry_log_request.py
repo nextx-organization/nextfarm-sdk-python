@@ -27,7 +27,10 @@ class HarvestCreateHusbandryLogRequest:
     
 
     avg_weight_g: float | None | Unset = UNSET
+    feed_item_id: None | Unset | UUID = UNSET
+    feed_item_name: None | str | Unset = UNSET
     head_count: int | None | Unset = UNSET
+    inventory_issue_id: None | Unset | UUID = UNSET
     kind: None | str | Unset = UNSET
     material_name: None | str | Unset = UNSET
     note: None | str | Unset = UNSET
@@ -50,11 +53,33 @@ class HarvestCreateHusbandryLogRequest:
         else:
             avg_weight_g = self.avg_weight_g
 
+        feed_item_id: None | str | Unset
+        if isinstance(self.feed_item_id, Unset):
+            feed_item_id = UNSET
+        elif isinstance(self.feed_item_id, UUID):
+            feed_item_id = str(self.feed_item_id)
+        else:
+            feed_item_id = self.feed_item_id
+
+        feed_item_name: None | str | Unset
+        if isinstance(self.feed_item_name, Unset):
+            feed_item_name = UNSET
+        else:
+            feed_item_name = self.feed_item_name
+
         head_count: int | None | Unset
         if isinstance(self.head_count, Unset):
             head_count = UNSET
         else:
             head_count = self.head_count
+
+        inventory_issue_id: None | str | Unset
+        if isinstance(self.inventory_issue_id, Unset):
+            inventory_issue_id = UNSET
+        elif isinstance(self.inventory_issue_id, UUID):
+            inventory_issue_id = str(self.inventory_issue_id)
+        else:
+            inventory_issue_id = self.inventory_issue_id
 
         kind: None | str | Unset
         if isinstance(self.kind, Unset):
@@ -125,8 +150,14 @@ class HarvestCreateHusbandryLogRequest:
         })
         if avg_weight_g is not UNSET:
             field_dict["avg_weight_g"] = avg_weight_g
+        if feed_item_id is not UNSET:
+            field_dict["feed_item_id"] = feed_item_id
+        if feed_item_name is not UNSET:
+            field_dict["feed_item_name"] = feed_item_name
         if head_count is not UNSET:
             field_dict["head_count"] = head_count
+        if inventory_issue_id is not UNSET:
+            field_dict["inventory_issue_id"] = inventory_issue_id
         if kind is not UNSET:
             field_dict["kind"] = kind
         if material_name is not UNSET:
@@ -165,6 +196,36 @@ class HarvestCreateHusbandryLogRequest:
         avg_weight_g = _parse_avg_weight_g(d.pop("avg_weight_g", UNSET))
 
 
+        def _parse_feed_item_id(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                feed_item_id_type_0 = UUID(data)
+
+
+
+                return feed_item_id_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        feed_item_id = _parse_feed_item_id(d.pop("feed_item_id", UNSET))
+
+
+        def _parse_feed_item_name(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        feed_item_name = _parse_feed_item_name(d.pop("feed_item_name", UNSET))
+
+
         def _parse_head_count(data: object) -> int | None | Unset:
             if data is None:
                 return data
@@ -173,6 +234,26 @@ class HarvestCreateHusbandryLogRequest:
             return cast(int | None | Unset, data)
 
         head_count = _parse_head_count(d.pop("head_count", UNSET))
+
+
+        def _parse_inventory_issue_id(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                inventory_issue_id_type_0 = UUID(data)
+
+
+
+                return inventory_issue_id_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        inventory_issue_id = _parse_inventory_issue_id(d.pop("inventory_issue_id", UNSET))
 
 
         def _parse_kind(data: object) -> None | str | Unset:
@@ -297,7 +378,10 @@ class HarvestCreateHusbandryLogRequest:
 
         harvest_create_husbandry_log_request = cls(
             avg_weight_g=avg_weight_g,
+            feed_item_id=feed_item_id,
+            feed_item_name=feed_item_name,
             head_count=head_count,
+            inventory_issue_id=inventory_issue_id,
             kind=kind,
             material_name=material_name,
             note=note,

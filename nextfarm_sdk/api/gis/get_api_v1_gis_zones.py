@@ -11,6 +11,7 @@ from ... import errors
 from ...models.gis_zone_list_item_dto_paged_result import GisZoneListItemDtoPagedResult
 from ...types import UNSET, Unset
 from typing import cast
+from uuid import UUID
 
 
 
@@ -21,6 +22,7 @@ def _get_kwargs(
     page_size: int | Unset = 100,
     deleted: bool | Unset = False,
     include_stats: bool | Unset = False,
+    branch_id: UUID | Unset = UNSET,
 
 ) -> dict[str, Any]:
     
@@ -38,6 +40,11 @@ def _get_kwargs(
     params["deleted"] = deleted
 
     params["include_stats"] = include_stats
+
+    json_branch_id: str | Unset = UNSET
+    if not isinstance(branch_id, Unset):
+        json_branch_id = str(branch_id)
+    params["branch_id"] = json_branch_id
 
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
@@ -85,6 +92,7 @@ def sync_detailed(
     page_size: int | Unset = 100,
     deleted: bool | Unset = False,
     include_stats: bool | Unset = False,
+    branch_id: UUID | Unset = UNSET,
 
 ) -> Response[GisZoneListItemDtoPagedResult]:
     """ Danh sách zones
@@ -97,6 +105,7 @@ def sync_detailed(
         page_size (int | Unset):  Default: 100.
         deleted (bool | Unset):  Default: False.
         include_stats (bool | Unset):  Default: False.
+        branch_id (UUID | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -113,6 +122,7 @@ page=page,
 page_size=page_size,
 deleted=deleted,
 include_stats=include_stats,
+branch_id=branch_id,
 
     )
 
@@ -130,6 +140,7 @@ def sync(
     page_size: int | Unset = 100,
     deleted: bool | Unset = False,
     include_stats: bool | Unset = False,
+    branch_id: UUID | Unset = UNSET,
 
 ) -> GisZoneListItemDtoPagedResult | None:
     """ Danh sách zones
@@ -142,6 +153,7 @@ def sync(
         page_size (int | Unset):  Default: 100.
         deleted (bool | Unset):  Default: False.
         include_stats (bool | Unset):  Default: False.
+        branch_id (UUID | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -159,6 +171,7 @@ page=page,
 page_size=page_size,
 deleted=deleted,
 include_stats=include_stats,
+branch_id=branch_id,
 
     ).parsed
 
@@ -170,6 +183,7 @@ async def asyncio_detailed(
     page_size: int | Unset = 100,
     deleted: bool | Unset = False,
     include_stats: bool | Unset = False,
+    branch_id: UUID | Unset = UNSET,
 
 ) -> Response[GisZoneListItemDtoPagedResult]:
     """ Danh sách zones
@@ -182,6 +196,7 @@ async def asyncio_detailed(
         page_size (int | Unset):  Default: 100.
         deleted (bool | Unset):  Default: False.
         include_stats (bool | Unset):  Default: False.
+        branch_id (UUID | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -198,6 +213,7 @@ page=page,
 page_size=page_size,
 deleted=deleted,
 include_stats=include_stats,
+branch_id=branch_id,
 
     )
 
@@ -215,6 +231,7 @@ async def asyncio(
     page_size: int | Unset = 100,
     deleted: bool | Unset = False,
     include_stats: bool | Unset = False,
+    branch_id: UUID | Unset = UNSET,
 
 ) -> GisZoneListItemDtoPagedResult | None:
     """ Danh sách zones
@@ -227,6 +244,7 @@ async def asyncio(
         page_size (int | Unset):  Default: 100.
         deleted (bool | Unset):  Default: False.
         include_stats (bool | Unset):  Default: False.
+        branch_id (UUID | Unset):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -244,5 +262,6 @@ page=page,
 page_size=page_size,
 deleted=deleted,
 include_stats=include_stats,
+branch_id=branch_id,
 
     )).parsed

@@ -27,6 +27,7 @@ class GisUpdatePondRequest:
 
     area_ha: float | Unset = UNSET
     boundary_geo_json: None | str | Unset = UNSET
+    branch_id: None | Unset | UUID = UNSET
     current_density: float | None | Unset = UNSET
     current_species: None | str | Unset = UNSET
     depth_m: float | None | Unset = UNSET
@@ -52,6 +53,14 @@ class GisUpdatePondRequest:
             boundary_geo_json = UNSET
         else:
             boundary_geo_json = self.boundary_geo_json
+
+        branch_id: None | str | Unset
+        if isinstance(self.branch_id, Unset):
+            branch_id = UNSET
+        elif isinstance(self.branch_id, UUID):
+            branch_id = str(self.branch_id)
+        else:
+            branch_id = self.branch_id
 
         current_density: float | None | Unset
         if isinstance(self.current_density, Unset):
@@ -136,6 +145,8 @@ class GisUpdatePondRequest:
             field_dict["area_ha"] = area_ha
         if boundary_geo_json is not UNSET:
             field_dict["boundary_geo_json"] = boundary_geo_json
+        if branch_id is not UNSET:
+            field_dict["branch_id"] = branch_id
         if current_density is not UNSET:
             field_dict["current_density"] = current_density
         if current_species is not UNSET:
@@ -178,6 +189,26 @@ class GisUpdatePondRequest:
             return cast(None | str | Unset, data)
 
         boundary_geo_json = _parse_boundary_geo_json(d.pop("boundary_geo_json", UNSET))
+
+
+        def _parse_branch_id(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                branch_id_type_0 = UUID(data)
+
+
+
+                return branch_id_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        branch_id = _parse_branch_id(d.pop("branch_id", UNSET))
 
 
         def _parse_current_density(data: object) -> float | None | Unset:
@@ -313,6 +344,7 @@ class GisUpdatePondRequest:
         gis_update_pond_request = cls(
             area_ha=area_ha,
             boundary_geo_json=boundary_geo_json,
+            branch_id=branch_id,
             current_density=current_density,
             current_species=current_species,
             depth_m=depth_m,

@@ -33,6 +33,7 @@ class GisParcelDetailDto:
 
     area_ha: float | None | Unset = UNSET
     boundary_geo_json: None | str | Unset = UNSET
+    branch_id: None | Unset | UUID = UNSET
     created_at: datetime.datetime | Unset = UNSET
     crop_type: GisParcelCropTypeDto | Unset = UNSET
     id: UUID | Unset = UNSET
@@ -65,6 +66,14 @@ class GisParcelDetailDto:
             boundary_geo_json = UNSET
         else:
             boundary_geo_json = self.boundary_geo_json
+
+        branch_id: None | str | Unset
+        if isinstance(self.branch_id, Unset):
+            branch_id = UNSET
+        elif isinstance(self.branch_id, UUID):
+            branch_id = str(self.branch_id)
+        else:
+            branch_id = self.branch_id
 
         created_at: str | Unset = UNSET
         if not isinstance(self.created_at, Unset):
@@ -136,6 +145,8 @@ class GisParcelDetailDto:
             field_dict["area_ha"] = area_ha
         if boundary_geo_json is not UNSET:
             field_dict["boundary_geo_json"] = boundary_geo_json
+        if branch_id is not UNSET:
+            field_dict["branch_id"] = branch_id
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if crop_type is not UNSET:
@@ -188,6 +199,26 @@ class GisParcelDetailDto:
             return cast(None | str | Unset, data)
 
         boundary_geo_json = _parse_boundary_geo_json(d.pop("boundary_geo_json", UNSET))
+
+
+        def _parse_branch_id(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                branch_id_type_0 = UUID(data)
+
+
+
+                return branch_id_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        branch_id = _parse_branch_id(d.pop("branch_id", UNSET))
 
 
         _created_at = d.pop("created_at", UNSET)
@@ -318,6 +349,7 @@ class GisParcelDetailDto:
         gis_parcel_detail_dto = cls(
             area_ha=area_ha,
             boundary_geo_json=boundary_geo_json,
+            branch_id=branch_id,
             created_at=created_at,
             crop_type=crop_type,
             id=id,

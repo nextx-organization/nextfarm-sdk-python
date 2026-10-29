@@ -26,6 +26,7 @@ class GisUpdateZoneRequest:
     
 
     boundary_geo_json: None | str | Unset = UNSET
+    branch_id: None | Unset | UUID = UNSET
     code: None | str | Unset = UNSET
     contact_person: None | str | Unset = UNSET
     contact_phone: None | str | Unset = UNSET
@@ -45,6 +46,14 @@ class GisUpdateZoneRequest:
             boundary_geo_json = UNSET
         else:
             boundary_geo_json = self.boundary_geo_json
+
+        branch_id: None | str | Unset
+        if isinstance(self.branch_id, Unset):
+            branch_id = UNSET
+        elif isinstance(self.branch_id, UUID):
+            branch_id = str(self.branch_id)
+        else:
+            branch_id = self.branch_id
 
         code: None | str | Unset
         if isinstance(self.code, Unset):
@@ -103,6 +112,8 @@ class GisUpdateZoneRequest:
         })
         if boundary_geo_json is not UNSET:
             field_dict["boundary_geo_json"] = boundary_geo_json
+        if branch_id is not UNSET:
+            field_dict["branch_id"] = branch_id
         if code is not UNSET:
             field_dict["code"] = code
         if contact_person is not UNSET:
@@ -135,6 +146,26 @@ class GisUpdateZoneRequest:
             return cast(None | str | Unset, data)
 
         boundary_geo_json = _parse_boundary_geo_json(d.pop("boundary_geo_json", UNSET))
+
+
+        def _parse_branch_id(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                branch_id_type_0 = UUID(data)
+
+
+
+                return branch_id_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        branch_id = _parse_branch_id(d.pop("branch_id", UNSET))
 
 
         def _parse_code(data: object) -> None | str | Unset:
@@ -229,6 +260,7 @@ class GisUpdateZoneRequest:
 
         gis_update_zone_request = cls(
             boundary_geo_json=boundary_geo_json,
+            branch_id=branch_id,
             code=code,
             contact_person=contact_person,
             contact_phone=contact_phone,

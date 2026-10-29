@@ -25,6 +25,7 @@ T = TypeVar("T", bound="GisZoneListItemDto")
 class GisZoneListItemDto:
     
 
+    branch_id: None | Unset | UUID = UNSET
     code: None | str | Unset = UNSET
     contact_person: None | str | Unset = UNSET
     contact_phone: None | str | Unset = UNSET
@@ -44,6 +45,14 @@ class GisZoneListItemDto:
 
 
     def to_dict(self) -> dict[str, Any]:
+        branch_id: None | str | Unset
+        if isinstance(self.branch_id, Unset):
+            branch_id = UNSET
+        elif isinstance(self.branch_id, UUID):
+            branch_id = str(self.branch_id)
+        else:
+            branch_id = self.branch_id
+
         code: None | str | Unset
         if isinstance(self.code, Unset):
             code = UNSET
@@ -127,6 +136,8 @@ class GisZoneListItemDto:
 
         field_dict.update({
         })
+        if branch_id is not UNSET:
+            field_dict["branch_id"] = branch_id
         if code is not UNSET:
             field_dict["code"] = code
         if contact_person is not UNSET:
@@ -161,6 +172,26 @@ class GisZoneListItemDto:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        def _parse_branch_id(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                branch_id_type_0 = UUID(data)
+
+
+
+                return branch_id_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        branch_id = _parse_branch_id(d.pop("branch_id", UNSET))
+
+
         def _parse_code(data: object) -> None | str | Unset:
             if data is None:
                 return data
@@ -302,6 +333,7 @@ class GisZoneListItemDto:
 
 
         gis_zone_list_item_dto = cls(
+            branch_id=branch_id,
             code=code,
             contact_person=contact_person,
             contact_phone=contact_phone,
