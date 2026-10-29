@@ -20,6 +20,7 @@ def _get_kwargs(
     facility_type: str | Unset = UNSET,
     status: str | Unset = UNSET,
     source_parcel_id: UUID | Unset = UNSET,
+    branch_id: UUID | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
 
@@ -38,6 +39,11 @@ def _get_kwargs(
     if not isinstance(source_parcel_id, Unset):
         json_source_parcel_id = str(source_parcel_id)
     params["sourceParcelId"] = json_source_parcel_id
+
+    json_branch_id: str | Unset = UNSET
+    if not isinstance(branch_id, Unset):
+        json_branch_id = str(branch_id)
+    params["branchId"] = json_branch_id
 
     params["page"] = page
 
@@ -87,6 +93,7 @@ def sync_detailed(
     facility_type: str | Unset = UNSET,
     status: str | Unset = UNSET,
     source_parcel_id: UUID | Unset = UNSET,
+    branch_id: UUID | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
 
@@ -94,12 +101,13 @@ def sync_detailed(
     """ Danh sách chuồng trại
 
      Lọc theo facilityType (barn, pasture, feedlot, dairy, poultry_house, piggery, processing_plant,
-    other) và status (active, inactive, maintenance). Phân trang.
+    other), status (active, inactive, maintenance) và branchId. Phân trang.
 
     Args:
         facility_type (str | Unset):
         status (str | Unset):
         source_parcel_id (UUID | Unset):
+        branch_id (UUID | Unset):
         page (int | Unset):  Default: 1.
         page_size (int | Unset):  Default: 50.
 
@@ -116,6 +124,7 @@ def sync_detailed(
         facility_type=facility_type,
 status=status,
 source_parcel_id=source_parcel_id,
+branch_id=branch_id,
 page=page,
 page_size=page_size,
 
@@ -133,6 +142,7 @@ def sync(
     facility_type: str | Unset = UNSET,
     status: str | Unset = UNSET,
     source_parcel_id: UUID | Unset = UNSET,
+    branch_id: UUID | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
 
@@ -140,12 +150,13 @@ def sync(
     """ Danh sách chuồng trại
 
      Lọc theo facilityType (barn, pasture, feedlot, dairy, poultry_house, piggery, processing_plant,
-    other) và status (active, inactive, maintenance). Phân trang.
+    other), status (active, inactive, maintenance) và branchId. Phân trang.
 
     Args:
         facility_type (str | Unset):
         status (str | Unset):
         source_parcel_id (UUID | Unset):
+        branch_id (UUID | Unset):
         page (int | Unset):  Default: 1.
         page_size (int | Unset):  Default: 50.
 
@@ -163,6 +174,7 @@ def sync(
 facility_type=facility_type,
 status=status,
 source_parcel_id=source_parcel_id,
+branch_id=branch_id,
 page=page,
 page_size=page_size,
 
@@ -174,6 +186,7 @@ async def asyncio_detailed(
     facility_type: str | Unset = UNSET,
     status: str | Unset = UNSET,
     source_parcel_id: UUID | Unset = UNSET,
+    branch_id: UUID | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
 
@@ -181,12 +194,13 @@ async def asyncio_detailed(
     """ Danh sách chuồng trại
 
      Lọc theo facilityType (barn, pasture, feedlot, dairy, poultry_house, piggery, processing_plant,
-    other) và status (active, inactive, maintenance). Phân trang.
+    other), status (active, inactive, maintenance) và branchId. Phân trang.
 
     Args:
         facility_type (str | Unset):
         status (str | Unset):
         source_parcel_id (UUID | Unset):
+        branch_id (UUID | Unset):
         page (int | Unset):  Default: 1.
         page_size (int | Unset):  Default: 50.
 
@@ -203,6 +217,7 @@ async def asyncio_detailed(
         facility_type=facility_type,
 status=status,
 source_parcel_id=source_parcel_id,
+branch_id=branch_id,
 page=page,
 page_size=page_size,
 
@@ -220,6 +235,7 @@ async def asyncio(
     facility_type: str | Unset = UNSET,
     status: str | Unset = UNSET,
     source_parcel_id: UUID | Unset = UNSET,
+    branch_id: UUID | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
 
@@ -227,12 +243,13 @@ async def asyncio(
     """ Danh sách chuồng trại
 
      Lọc theo facilityType (barn, pasture, feedlot, dairy, poultry_house, piggery, processing_plant,
-    other) và status (active, inactive, maintenance). Phân trang.
+    other), status (active, inactive, maintenance) và branchId. Phân trang.
 
     Args:
         facility_type (str | Unset):
         status (str | Unset):
         source_parcel_id (UUID | Unset):
+        branch_id (UUID | Unset):
         page (int | Unset):  Default: 1.
         page_size (int | Unset):  Default: 50.
 
@@ -250,6 +267,7 @@ async def asyncio(
 facility_type=facility_type,
 status=status,
 source_parcel_id=source_parcel_id,
+branch_id=branch_id,
 page=page,
 page_size=page_size,
 

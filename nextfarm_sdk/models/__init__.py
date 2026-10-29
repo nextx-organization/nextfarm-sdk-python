@@ -105,11 +105,13 @@ from .gis_set_perennial_profile_request import GisSetPerennialProfileRequest
 from .gis_spotlight_hit import GisSpotlightHit
 from .gis_update_crop_type_request import GisUpdateCropTypeRequest
 from .gis_update_facility_request import GisUpdateFacilityRequest
+from .gis_update_facility_result import GisUpdateFacilityResult
 from .gis_update_farmer_request import GisUpdateFarmerRequest
 from .gis_update_parcel_boundary_request import GisUpdateParcelBoundaryRequest
 from .gis_update_parcel_request import GisUpdateParcelRequest
 from .gis_update_plot_request import GisUpdatePlotRequest
 from .gis_update_pond_request import GisUpdatePondRequest
+from .gis_update_pond_result import GisUpdatePondResult
 from .gis_update_season_request import GisUpdateSeasonRequest
 from .gis_update_zone_request import GisUpdateZoneRequest
 from .gis_zone_dto import GisZoneDto
@@ -133,6 +135,7 @@ from .harvest_change_organism_status_request import HarvestChangeOrganismStatusR
 from .harvest_collect_harvest_request import HarvestCollectHarvestRequest
 from .harvest_confirm_harvest_request import HarvestConfirmHarvestRequest
 from .harvest_create_certification_request import HarvestCreateCertificationRequest
+from .harvest_create_field_log_input_request import HarvestCreateFieldLogInputRequest
 from .harvest_create_field_log_request import HarvestCreateFieldLogRequest
 from .harvest_create_husbandry_log_request import HarvestCreateHusbandryLogRequest
 from .harvest_create_market_price_request import HarvestCreateMarketPriceRequest
@@ -1270,11 +1273,13 @@ __all__ = (
     "GisSpotlightHit",
     "GisUpdateCropTypeRequest",
     "GisUpdateFacilityRequest",
+    "GisUpdateFacilityResult",
     "GisUpdateFarmerRequest",
     "GisUpdateParcelBoundaryRequest",
     "GisUpdateParcelRequest",
     "GisUpdatePlotRequest",
     "GisUpdatePondRequest",
+    "GisUpdatePondResult",
     "GisUpdateSeasonRequest",
     "GisUpdateZoneRequest",
     "GisZoneDto",
@@ -1298,6 +1303,7 @@ __all__ = (
     "HarvestCollectHarvestRequest",
     "HarvestConfirmHarvestRequest",
     "HarvestCreateCertificationRequest",
+    "HarvestCreateFieldLogInputRequest",
     "HarvestCreateFieldLogRequest",
     "HarvestCreateHusbandryLogRequest",
     "HarvestCreateMarketPriceRequest",

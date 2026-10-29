@@ -23,6 +23,7 @@ def _get_kwargs(
     owner_id: UUID | Unset = UNSET,
     crop_type_id: UUID | Unset = UNSET,
     status: str | Unset = UNSET,
+    branch_id: UUID | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
     deleted: bool | Unset = False,
@@ -52,6 +53,11 @@ def _get_kwargs(
     params["cropTypeId"] = json_crop_type_id
 
     params["status"] = status
+
+    json_branch_id: str | Unset = UNSET
+    if not isinstance(branch_id, Unset):
+        json_branch_id = str(branch_id)
+    params["branchId"] = json_branch_id
 
     params["page"] = page
 
@@ -112,6 +118,7 @@ def sync_detailed(
     owner_id: UUID | Unset = UNSET,
     crop_type_id: UUID | Unset = UNSET,
     status: str | Unset = UNSET,
+    branch_id: UUID | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
     deleted: bool | Unset = False,
@@ -119,8 +126,8 @@ def sync_detailed(
 ) -> Response[GisParcelListItemDtoPagedResult | GisProblemDetails]:
     """ Danh sách lô thửa
 
-     Lọc theo bbox (minLon,minLat,maxLon,maxLat), zoneId, ownerId, cropTypeId, status. Phân trang. Bbox
-    max 2°×2°, tối đa 1000 results.
+     Lọc theo bbox (minLon,minLat,maxLon,maxLat), zoneId, ownerId, cropTypeId, status, branchId. Phân
+    trang. Bbox max 2°×2°, tối đa 1000 results.
 
     Args:
         bbox (str | Unset):
@@ -128,6 +135,7 @@ def sync_detailed(
         owner_id (UUID | Unset):
         crop_type_id (UUID | Unset):
         status (str | Unset):
+        branch_id (UUID | Unset):
         page (int | Unset):  Default: 1.
         page_size (int | Unset):  Default: 50.
         deleted (bool | Unset):  Default: False.
@@ -147,6 +155,7 @@ zone_id=zone_id,
 owner_id=owner_id,
 crop_type_id=crop_type_id,
 status=status,
+branch_id=branch_id,
 page=page,
 page_size=page_size,
 deleted=deleted,
@@ -167,6 +176,7 @@ def sync(
     owner_id: UUID | Unset = UNSET,
     crop_type_id: UUID | Unset = UNSET,
     status: str | Unset = UNSET,
+    branch_id: UUID | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
     deleted: bool | Unset = False,
@@ -174,8 +184,8 @@ def sync(
 ) -> GisParcelListItemDtoPagedResult | GisProblemDetails | None:
     """ Danh sách lô thửa
 
-     Lọc theo bbox (minLon,minLat,maxLon,maxLat), zoneId, ownerId, cropTypeId, status. Phân trang. Bbox
-    max 2°×2°, tối đa 1000 results.
+     Lọc theo bbox (minLon,minLat,maxLon,maxLat), zoneId, ownerId, cropTypeId, status, branchId. Phân
+    trang. Bbox max 2°×2°, tối đa 1000 results.
 
     Args:
         bbox (str | Unset):
@@ -183,6 +193,7 @@ def sync(
         owner_id (UUID | Unset):
         crop_type_id (UUID | Unset):
         status (str | Unset):
+        branch_id (UUID | Unset):
         page (int | Unset):  Default: 1.
         page_size (int | Unset):  Default: 50.
         deleted (bool | Unset):  Default: False.
@@ -203,6 +214,7 @@ zone_id=zone_id,
 owner_id=owner_id,
 crop_type_id=crop_type_id,
 status=status,
+branch_id=branch_id,
 page=page,
 page_size=page_size,
 deleted=deleted,
@@ -217,6 +229,7 @@ async def asyncio_detailed(
     owner_id: UUID | Unset = UNSET,
     crop_type_id: UUID | Unset = UNSET,
     status: str | Unset = UNSET,
+    branch_id: UUID | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
     deleted: bool | Unset = False,
@@ -224,8 +237,8 @@ async def asyncio_detailed(
 ) -> Response[GisParcelListItemDtoPagedResult | GisProblemDetails]:
     """ Danh sách lô thửa
 
-     Lọc theo bbox (minLon,minLat,maxLon,maxLat), zoneId, ownerId, cropTypeId, status. Phân trang. Bbox
-    max 2°×2°, tối đa 1000 results.
+     Lọc theo bbox (minLon,minLat,maxLon,maxLat), zoneId, ownerId, cropTypeId, status, branchId. Phân
+    trang. Bbox max 2°×2°, tối đa 1000 results.
 
     Args:
         bbox (str | Unset):
@@ -233,6 +246,7 @@ async def asyncio_detailed(
         owner_id (UUID | Unset):
         crop_type_id (UUID | Unset):
         status (str | Unset):
+        branch_id (UUID | Unset):
         page (int | Unset):  Default: 1.
         page_size (int | Unset):  Default: 50.
         deleted (bool | Unset):  Default: False.
@@ -252,6 +266,7 @@ zone_id=zone_id,
 owner_id=owner_id,
 crop_type_id=crop_type_id,
 status=status,
+branch_id=branch_id,
 page=page,
 page_size=page_size,
 deleted=deleted,
@@ -272,6 +287,7 @@ async def asyncio(
     owner_id: UUID | Unset = UNSET,
     crop_type_id: UUID | Unset = UNSET,
     status: str | Unset = UNSET,
+    branch_id: UUID | Unset = UNSET,
     page: int | Unset = 1,
     page_size: int | Unset = 50,
     deleted: bool | Unset = False,
@@ -279,8 +295,8 @@ async def asyncio(
 ) -> GisParcelListItemDtoPagedResult | GisProblemDetails | None:
     """ Danh sách lô thửa
 
-     Lọc theo bbox (minLon,minLat,maxLon,maxLat), zoneId, ownerId, cropTypeId, status. Phân trang. Bbox
-    max 2°×2°, tối đa 1000 results.
+     Lọc theo bbox (minLon,minLat,maxLon,maxLat), zoneId, ownerId, cropTypeId, status, branchId. Phân
+    trang. Bbox max 2°×2°, tối đa 1000 results.
 
     Args:
         bbox (str | Unset):
@@ -288,6 +304,7 @@ async def asyncio(
         owner_id (UUID | Unset):
         crop_type_id (UUID | Unset):
         status (str | Unset):
+        branch_id (UUID | Unset):
         page (int | Unset):  Default: 1.
         page_size (int | Unset):  Default: 50.
         deleted (bool | Unset):  Default: False.
@@ -308,6 +325,7 @@ zone_id=zone_id,
 owner_id=owner_id,
 crop_type_id=crop_type_id,
 status=status,
+branch_id=branch_id,
 page=page,
 page_size=page_size,
 deleted=deleted,

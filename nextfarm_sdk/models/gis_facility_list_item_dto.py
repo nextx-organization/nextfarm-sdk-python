@@ -28,6 +28,7 @@ class GisFacilityListItemDto:
 
     area_ha: float | None | Unset = UNSET
     boundary_geo_json: None | str | Unset = UNSET
+    branch_id: None | Unset | UUID = UNSET
     capacity: int | None | Unset = UNSET
     created_at: datetime.datetime | Unset = UNSET
     current_stock: int | Unset = UNSET
@@ -56,6 +57,14 @@ class GisFacilityListItemDto:
             boundary_geo_json = UNSET
         else:
             boundary_geo_json = self.boundary_geo_json
+
+        branch_id: None | str | Unset
+        if isinstance(self.branch_id, Unset):
+            branch_id = UNSET
+        elif isinstance(self.branch_id, UUID):
+            branch_id = str(self.branch_id)
+        else:
+            branch_id = self.branch_id
 
         capacity: int | None | Unset
         if isinstance(self.capacity, Unset):
@@ -124,6 +133,8 @@ class GisFacilityListItemDto:
             field_dict["area_ha"] = area_ha
         if boundary_geo_json is not UNSET:
             field_dict["boundary_geo_json"] = boundary_geo_json
+        if branch_id is not UNSET:
+            field_dict["branch_id"] = branch_id
         if capacity is not UNSET:
             field_dict["capacity"] = capacity
         if created_at is not UNSET:
@@ -172,6 +183,26 @@ class GisFacilityListItemDto:
             return cast(None | str | Unset, data)
 
         boundary_geo_json = _parse_boundary_geo_json(d.pop("boundary_geo_json", UNSET))
+
+
+        def _parse_branch_id(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                branch_id_type_0 = UUID(data)
+
+
+
+                return branch_id_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        branch_id = _parse_branch_id(d.pop("branch_id", UNSET))
 
 
         def _parse_capacity(data: object) -> int | None | Unset:
@@ -289,6 +320,7 @@ class GisFacilityListItemDto:
         gis_facility_list_item_dto = cls(
             area_ha=area_ha,
             boundary_geo_json=boundary_geo_json,
+            branch_id=branch_id,
             capacity=capacity,
             created_at=created_at,
             current_stock=current_stock,

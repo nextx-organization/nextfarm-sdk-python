@@ -13,6 +13,8 @@ from typing import cast
 from uuid import UUID
 import datetime
 
+if TYPE_CHECKING:
+  from ..models.harvest_create_field_log_input_request import HarvestCreateFieldLogInputRequest
 
 
 
@@ -26,8 +28,10 @@ T = TypeVar("T", bound="HarvestCreateFieldLogRequest")
 class HarvestCreateFieldLogRequest:
     
 
+    client_request_id: None | str | Unset = UNSET
     completed_at: datetime.datetime | None | Unset = UNSET
     for_owner_id: None | Unset | UUID = UNSET
+    inputs: list[HarvestCreateFieldLogInputRequest] | None | Unset = UNSET
     organism_ids: list[UUID] | None | Unset = UNSET
     parcel_id: UUID | Unset = UNSET
     photo_paths: list[str] | None | Unset = UNSET
@@ -37,12 +41,20 @@ class HarvestCreateFieldLogRequest:
     spray_phi_days: int | None | Unset = UNSET
     spray_product_name: None | str | Unset = UNSET
     title: None | str | Unset = UNSET
+    work_type: None | str | Unset = UNSET
 
 
 
 
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.harvest_create_field_log_input_request import HarvestCreateFieldLogInputRequest # noqa: PLC0415
+        client_request_id: None | str | Unset
+        if isinstance(self.client_request_id, Unset):
+            client_request_id = UNSET
+        else:
+            client_request_id = self.client_request_id
+
         completed_at: None | str | Unset
         if isinstance(self.completed_at, Unset):
             completed_at = UNSET
@@ -58,6 +70,19 @@ class HarvestCreateFieldLogRequest:
             for_owner_id = str(self.for_owner_id)
         else:
             for_owner_id = self.for_owner_id
+
+        inputs: list[dict[str, Any]] | None | Unset
+        if isinstance(self.inputs, Unset):
+            inputs = UNSET
+        elif isinstance(self.inputs, list):
+            inputs = []
+            for inputs_type_0_item_data in self.inputs:
+                inputs_type_0_item = inputs_type_0_item_data.to_dict()
+                inputs.append(inputs_type_0_item)
+
+
+        else:
+            inputs = self.inputs
 
         organism_ids: list[str] | None | Unset
         if isinstance(self.organism_ids, Unset):
@@ -124,15 +149,25 @@ class HarvestCreateFieldLogRequest:
         else:
             title = self.title
 
+        work_type: None | str | Unset
+        if isinstance(self.work_type, Unset):
+            work_type = UNSET
+        else:
+            work_type = self.work_type
+
 
         field_dict: dict[str, Any] = {}
 
         field_dict.update({
         })
+        if client_request_id is not UNSET:
+            field_dict["client_request_id"] = client_request_id
         if completed_at is not UNSET:
             field_dict["completed_at"] = completed_at
         if for_owner_id is not UNSET:
             field_dict["for_owner_id"] = for_owner_id
+        if inputs is not UNSET:
+            field_dict["inputs"] = inputs
         if organism_ids is not UNSET:
             field_dict["organism_ids"] = organism_ids
         if parcel_id is not UNSET:
@@ -151,6 +186,8 @@ class HarvestCreateFieldLogRequest:
             field_dict["spray_product_name"] = spray_product_name
         if title is not UNSET:
             field_dict["title"] = title
+        if work_type is not UNSET:
+            field_dict["work_type"] = work_type
 
         return field_dict
 
@@ -158,7 +195,18 @@ class HarvestCreateFieldLogRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.harvest_create_field_log_input_request import HarvestCreateFieldLogInputRequest # noqa: PLC0415
         d = dict(src_dict)
+        def _parse_client_request_id(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        client_request_id = _parse_client_request_id(d.pop("client_request_id", UNSET))
+
+
         def _parse_completed_at(data: object) -> datetime.datetime | None | Unset:
             if data is None:
                 return data
@@ -197,6 +245,31 @@ class HarvestCreateFieldLogRequest:
             return cast(None | Unset | UUID, data)
 
         for_owner_id = _parse_for_owner_id(d.pop("for_owner_id", UNSET))
+
+
+        def _parse_inputs(data: object) -> list[HarvestCreateFieldLogInputRequest] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                inputs_type_0 = []
+                _inputs_type_0 = data
+                for inputs_type_0_item_data in (_inputs_type_0):
+                    inputs_type_0_item = HarvestCreateFieldLogInputRequest.from_dict(inputs_type_0_item_data)
+
+
+
+                    inputs_type_0.append(inputs_type_0_item)
+
+                return inputs_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[HarvestCreateFieldLogInputRequest] | None | Unset, data)
+
+        inputs = _parse_inputs(d.pop("inputs", UNSET))
 
 
         def _parse_organism_ids(data: object) -> list[UUID] | None | Unset:
@@ -322,9 +395,21 @@ class HarvestCreateFieldLogRequest:
         title = _parse_title(d.pop("title", UNSET))
 
 
+        def _parse_work_type(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        work_type = _parse_work_type(d.pop("work_type", UNSET))
+
+
         harvest_create_field_log_request = cls(
+            client_request_id=client_request_id,
             completed_at=completed_at,
             for_owner_id=for_owner_id,
+            inputs=inputs,
             organism_ids=organism_ids,
             parcel_id=parcel_id,
             photo_paths=photo_paths,
@@ -334,6 +419,7 @@ class HarvestCreateFieldLogRequest:
             spray_phi_days=spray_phi_days,
             spray_product_name=spray_product_name,
             title=title,
+            work_type=work_type,
         )
 
         return harvest_create_field_log_request
